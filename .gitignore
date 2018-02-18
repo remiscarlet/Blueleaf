@@ -2,6 +2,9 @@
 venv/*
 *.wsgi
 
+# generated static files
+blueleaf/static/gen*
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

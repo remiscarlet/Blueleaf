@@ -5,7 +5,7 @@ window.onload = function () {
         var classes = $(this).attr('class');
         classes.split(" ").forEach(function (className) {
             if (className.indexOf('on-load') === 0) {
-                $(parentThis).removeClass(className);
+                //$(parentThis).removeClass(className);
             }
         });
     });

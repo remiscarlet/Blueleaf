@@ -17,11 +17,12 @@
 }
 
 .on-load{
+    opacity: 0;
     &-fade-in {
-        @include animation('fade-in 0.8s 1');
+        @include animation('fade-in 1s 1');
     }
     &-slide-and-fade {
-        @include animation('fade-in 0.8s 1', 'slide-in-from-right 0.8s 1');
+        @include animation('fade-in 1s 1', 'slide-in-from-right 1s 1');
     }
 }
 

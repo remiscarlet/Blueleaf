@@ -1,6 +1,6 @@
 # virtualenv
-env/*
-env_etsy/*
+venv/*
+*.wsgi
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

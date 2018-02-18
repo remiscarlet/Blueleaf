@@ -7,6 +7,8 @@ from flask_user import UserManager, SQLAlchemyAdapter
 import sys, os
 import requests
 
+import logging
+from logging.handlers import RotatingFileHandler
 
 import views
 import models
@@ -16,6 +18,10 @@ import config
 # Base init
 app = Flask(__name__, static_url_path='/static')
 app.config.from_object(config.Config) # load config from this file
+
+handler = RotatingFileHandler(app.config["LOG_LOCATION"], maxBytes=10000, backupCount=1)
+handler.setLevel(logging.INFO)
+app.logger.addHandler(handler)
 
 # Blueprints
 app.register_blueprint(views.base)
@@ -45,6 +51,8 @@ db.create_all()
 # Setup Flask-User and specify the User data-model
 db_adapter = SQLAlchemyAdapter(db, models.User)        # Register the User model
 user_manager = UserManager(db_adapter, app)     # Initialize Flask-User
+
+
 
 if __name__ == '__main__':
     app.run()

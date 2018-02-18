@@ -1,3 +1,7 @@
+# virtualenv
+env/*
+env_etsy/*
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

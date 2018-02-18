@@ -22,9 +22,15 @@
     </head>
 
     <body>
-        <!-- Content -->
-        {% block base_content %}{% endblock %}
-
+        <div id="master-container">
+            <!-- Content -->
+            <div id="content">
+                {% block base_content %}{% endblock %}
+            </div>
+            <div id="footer" class="aligner-center-vertical aligner-center-horizontal">
+                {% include "footer.html" %}
+            </div>
+        </div>
         <!-- Base JS -->
         {% assets "base_js" %}
             <script type="text/javascript" src="{{ ASSET_URL }}"></script>

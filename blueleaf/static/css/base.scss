@@ -1,4 +1,4 @@
-//@import "inc/variables";
+@import "inc/variables";
 @import "inc/scss_base";
 
 @include keyframes(fade-in) {
@@ -26,13 +26,38 @@
     }
 }
 
-body {
-    font-family: 'Exo 2', 'sans serif';
-}
-
 .unselectable {
     -webkit-user-select: none; /* Safari */        
        -moz-user-select: none; /* Firefox */
         -ms-user-select: none; /* IE10+/Edge */
             user-select: none; /* Standard */
 }
+
+html, body {
+	height: 100%;
+}
+
+body {
+    font-family: 'Exo 2', 'sans serif';
+}
+
+#master-container {
+    height: 100vh;
+    display: grid;
+	grid-template-columns: 1fr;
+    grid-template-rows: 1fr 50px;
+    grid-template-areas: "main-content"
+                         "main-footer";
+
+    #content {
+		grid-area: main-content;
+    }
+    #footer {
+        color: $gray-light;
+        text-align: center;
+        padding: auto;
+		grid-area: main-footer;
+    }
+}
+
+

@@ -10,9 +10,17 @@ window.onload = function () {
             password: password,
         };
 
-        $.post(Flask.url_for("login"), params).done(function (data) {
+        $.post(Flask.url_for("base.login"), params).done(function (data) {
             console.log("On success:");
             console.log(data);
+        }).fail(function (data) {
+            console.log("On failure:");
+            $('#error_notices').html("Unknown username or password")
+                               .addClass('background-error')
+                               .addClass('visible').addClass('shake');
+            setTimeout(function () { 
+                $('#error_notices').removeClass('shake');
+            }, 300);
         });
     });
 

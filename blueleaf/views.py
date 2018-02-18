@@ -1,3 +1,4 @@
+import flask
 from flask import Blueprint, render_template
 
 base = Blueprint('base', __name__,
@@ -14,4 +15,6 @@ def login():
 		return redirect(url_for('/'))
 	elif flask.request.method == "POST":
 		data = flask.request.form
-		return flask.json.jsonify({"success": True})
+		if flask.request.form["email"] == "asdf":
+			return flask.json.jsonify({"success": True})
+		return flask.json.jsonify({"success": False}), 400

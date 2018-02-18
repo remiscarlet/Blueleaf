@@ -1,13 +1,13 @@
+# -*- coding: UTF-8 -*-
+import flask
+from flask import Flask, render_template
+from flask_jsglue import JSGlue
+from flask_user import UserManager, SQLAlchemyAdapter
 
 import sys, os
-
-from flask import Flask, render_template, render_template_string
 import requests
-import flask
-from flask_jsglue import JSGlue
-from flask_sqlalchemy import SQLAlchemy
-from flask_assets import Bundle, Environment
-from flask_user import login_required, UserManager, UserMixin, SQLAlchemyAdapter
+
+
 import views
 import models
 import bundles

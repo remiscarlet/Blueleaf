@@ -12,6 +12,9 @@
             <link rel="stylesheet" href="{{ ASSET_URL }}" />
         {% endassets %}
 
+        <!-- External CSS sheets -->
+        <link href="https://fonts.googleapis.com/css?family=Exo+2" rel="stylesheet">
+
         <!-- Block-loaded CSS -->
         {% block head %}{% endblock %}
 
@@ -23,10 +26,13 @@
         {% block base_content %}{% endblock %}
 
         <!-- Base JS -->
-        <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
         {% assets "base_js" %}
             <script type="text/javascript" src="{{ ASSET_URL }}"></script>
         {% endassets %}
+
+        <!-- External JS -->
+        <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+
         <!-- Block-loaded JS -->
         {% block js %}{% endblock %}
     </body>

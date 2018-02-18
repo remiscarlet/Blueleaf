@@ -9,4 +9,19 @@ window.onload = function () {
             }
         });
     });
+
+    $('#login-button').on('click', function () {
+        var email = $('input#email').val();
+        var password = $('input#password').val();
+
+        var params = {
+            email: email,
+            password: password,
+        };
+
+        $.post(Flask.url_for("login"), params).done(function (data) {
+            console.log("On success:");
+            console.log(data);
+        });
+    });
 };

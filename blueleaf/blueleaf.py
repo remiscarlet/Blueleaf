@@ -2,6 +2,9 @@
 import sys, os
 
 from flask import Flask, render_template, render_template_string
+import requests
+import flask
+from flask_jsglue import JSGlue
 from flask_sqlalchemy import SQLAlchemy
 from flask_assets import Bundle, Environment
 from flask_user import login_required, UserManager, UserMixin, SQLAlchemyAdapter
@@ -11,6 +14,7 @@ app = Flask(__name__, static_url_path='/static')
 app.config.from_object(config.Config) # load config from this file
 
 db = SQLAlchemy(app)
+jsglue = JSGlue(app)
 
 bundles = {
 	'base_js': Bundle(
@@ -74,6 +78,11 @@ user_manager = UserManager(db_adapter, app)     # Initialize Flask-User
 def home_page():
     return render_template('login.html')
 
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    data = flask.request.form
+    return flask.json.jsonify({"success": True})
+
 # The Members page is only accessible to authenticated users
 @app.route('/members')
 @login_required                                 # Use of @login_required decorator
@@ -81,6 +90,8 @@ def members_page():
 	return render_template_string("""
     <h2> Not this</h2>
 		""")
+
+
 
 if __name__ == '__main__':
     app.run()

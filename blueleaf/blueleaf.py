@@ -5,13 +5,11 @@ from flask import Flask, render_template_string
 from flask_sqlalchemy import SQLAlchemy
 from flask_assets import Bundle, Environment
 from flask_user import login_required, UserManager, UserMixin, SQLAlchemyAdapter
-from flask_scss import Scss
 import config
 
 app = Flask(__name__, static_url_path='/static')
 app.config.from_object(config.Config) # load config from this file
 
-Scss(app)
 db = SQLAlchemy(app)
 
 bundles = {
@@ -19,9 +17,20 @@ bundles = {
 		'js/lib/jquery-3.3.1.min.js',
         'js/base.js',
         output='gen/base.js'
-	)
+	),
+    'base_css': Bundle(
+        'css/base.scss',
+        output='gen/base.css',
+        filters='pyscss'
+    ),
 }
 assets = Environment(app)
+assets.url = app.static_url_path
+assets.config['PYSCSS_LOAD_PATHS'] = assets.load_path
+assets.config['PYSCSS_STATIC_URL'] = assets.url
+assets.config['PYSCSS_STATIC_ROOT'] = assets.directory
+assets.config['PYSCSS_ASSETS_URL'] = assets.url
+assets.config['PYSCSS_ASSETS_ROOT'] = assets.directory
 assets.register(bundles)
 
 

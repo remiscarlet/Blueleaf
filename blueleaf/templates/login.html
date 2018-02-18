@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+<!-- Non-content blocks -->
+{% block title %}Blueleaf{% endblock %}
+
+{% block head %}
+    {% assets "login_css" %}
+        <link rel="stylesheet" href="{{ ASSET_URL }}" />
+    {% endassets %}
+{% endblock head %}
+
+{% block js %}
+    {% assets "login_js" %}
+        <script type="text/javascript" src="{{ ASSET_URL }}"></script>
+    {% endassets %}
+{% endblock js %}
+
+<!-- Actual content -->
+
+{% block base_content %}
+<div class="main-container">
+	<h2><i class="fab fa-envira fa-2x on-load-slide-and-fade"></i>Blueleaf</h2>
+    <div class="input input-with-icon login-width on-load-fade-in">
+        <input id="username" placeholder="Username" type="text">
+        <i class="input-icon fa fa-envelope fa-lg"></i>
+    </div>
+    <div class="input input-with-icon login-width on-load-fade-in">
+        <input id="password" placeholder="Password" type="text">
+        <i class="input-icon fa fa-key fa-lg"></i>
+    </div>
+	<div class="login-width aligner-center-horizontal on-load-fade-in">
+		<button class="item button button-primary">
+			Log In
+		</button>
+	</div>
+</div>
+
+<div class="login">
+    <input type="textarea">
+</div>
+{% endblock base_content %}
+

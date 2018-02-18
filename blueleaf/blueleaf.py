@@ -1,7 +1,7 @@
 
 import sys, os
 
-from flask import Flask, render_template_string
+from flask import Flask, render_template, render_template_string
 from flask_sqlalchemy import SQLAlchemy
 from flask_assets import Bundle, Environment
 from flask_user import login_required, UserManager, UserMixin, SQLAlchemyAdapter
@@ -19,12 +19,24 @@ bundles = {
         output='gen/base.js'
 	),
     'base_css': Bundle(
+        'css/lib/sierra.css',
         'css/base.scss',
         output='gen/base.css',
+        depends=('css/incs/*.scss'),
         filters='pyscss'
+    ),
+    'login_js': Bundle(
+        'js/login.js',
+        output='gen/login.js',
+    ),
+    'login_css': Bundle(
+        'css/login.scss',
+        output='gen/login.css',
+        filters='pyscss',
     ),
 }
 assets = Environment(app)
+assets.auto_reload = True
 assets.url = app.static_url_path
 assets.config['PYSCSS_LOAD_PATHS'] = assets.load_path
 assets.config['PYSCSS_STATIC_URL'] = assets.url
@@ -60,28 +72,14 @@ user_manager = UserManager(db_adapter, app)     # Initialize Flask-User
 # The Home page is accessible to anyone
 @app.route('/')
 def home_page():
-	return render_template_string("""
-		{% extends "base.html" %}
-		{% block content %}
-			<h2>Home page</h2>
-			<p>This page can be accessed by anyone.</p><br/>
-			<p><a href={{ url_for('home_page') }}>Home page</a> (anyone)</p>
-			<p><a href={{ url_for('members_page') }}>Members page</a> (login required)</p>
-		{% endblock %}
-		""")
+    return render_template('login.html')
 
 # The Members page is only accessible to authenticated users
 @app.route('/members')
 @login_required                                 # Use of @login_required decorator
 def members_page():
 	return render_template_string("""
-		{% extends "base.html" %}
-		{% block content %}
-			<h2>Members page</h2>
-			<p>This page can only be accessed by authenticated users.</p><br/>
-			<p><a href={{ url_for('home_page') }}>Home page</a> (anyone)</p>
-			<p><a href={{ url_for('members_page') }}>Members page</a> (login required)</p>
-		{% endblock %}
+    <h2> Not this</h2>
 		""")
 
 if __name__ == '__main__':

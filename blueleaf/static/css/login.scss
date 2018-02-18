@@ -1,0 +1,30 @@
+@import "inc/variables";
+@import "inc/scss_base";
+
+
+.main-container {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+}
+.login-width {
+    width: 350px;
+}
+
+h2 {
+    position: relative;
+    margin-bottom: 15px;
+    font-size: 2em;
+
+    svg {
+        color: $brand-primary;
+    }
+
+    &:hover {
+        @include animation('expand-on-hover 0.4s 1');
+        transform: scale(1.05);
+    }
+}

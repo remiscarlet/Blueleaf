@@ -1,5 +1,27 @@
-body {
-    div {
-        background-color: green;
+//@import "inc/variables";
+@import "inc/scss_base";
+
+@include keyframes(fade-in) {
+    0%   { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@include keyframes(slide-in-from-right) {
+    0%   { left: 50px; }
+    100% { left: 0px; }
+}
+
+@include keyframes(expand-on-hover) {
+    0%   { transform: scale(1.00); }
+    100% { transform: scale(1.05); }
+}
+
+.on-load{
+    &-fade-in {
+        @include animation('fade-in 0.8s 1');
+    }
+    &-slide-and-fade {
+        @include animation('fade-in 0.8s 1', 'slide-in-from-right 0.8s 1');
     }
 }
+

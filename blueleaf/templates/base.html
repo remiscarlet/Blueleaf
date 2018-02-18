@@ -1,74 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>AAAAA</title>
-	{% assets "base_js" %}
-		<script type="text/javascript" src="{{ ASSET_URL }}"></script>
-	{% endassets %}
-	{% assets "base_css" %}
-		<link rel="stylesheet" href="{{ ASSET_URL }}" />
-	{% endassets %}
-  </head>
+        <title>{% block title %}{% endblock %}</title>
 
+        <!-- Base CSS sheets -->
+        {% assets "base_css" %}
+            <link rel="stylesheet" href="{{ ASSET_URL }}" />
+        {% endassets %}
 
-<body>
-    {% block body %}
-    <div id="header-div" class="clearfix with-margins">
-        <div class="pull-left"><a href="/"><h1 class="no-margins">MyApp</h1></a></div>
-        <div class="pull-right">
-            {% if call_or_get(current_user.is_authenticated) %}
-                <a href="{{ url_for('user.profile') }}">{{ current_user.username }}</a>
-                &nbsp; | &nbsp;
-                <a href="{{ url_for('user.logout') }}">Sign out</a>
-            {% else %}
-                <a href="{{ url_for('user.login') }}">Sign in</a>
-            {% endif %}
-        </div>
-    </div>
-    {% block menu %}
-    <div id="menu-div" class="with-margins">
-        <a href="/">Home</a>
-        {% if call_or_get(current_user.is_authenticated) %}
-            &nbsp; | &nbsp; <a href="{{ url_for('user.profile') }}">User profile</a>
-        {% endif %}
-    </div>
-    {% endblock %}
-    <hr class="no-margins"/>
+        <!-- Block-loaded CSS -->
+        {% block head %}{% endblock %}
+    </head>
 
-    <div id="main-div" class="with-margins">
-    {# One-time system messages called Flash messages #}
-    {% block flash_messages %}
-        {%- with messages = get_flashed_messages(with_categories=true) -%}
-            {% if messages %}
-                {% for category, message in messages %}
-                    {% if category=='error' %}
-                        {% set category='danger' %}
-                    {% endif %}
-                    <div class="alert alert-{{category}}">{{ message|safe }}</div>
-                {% endfor %}
-            {% endif %}
-        {%- endwith %}
-    {% endblock %}
+    <body>
+        <!-- Content -->
+        {% block base_content %}{% endblock %}
 
-    {% block main %}{% block content %}{% endblock %}{% endblock %}
-    </div>
-
-    <br/>
-    <hr class="no-margins"/>
-    <div id="footer-div" class="clearfix with-margins">
-        <div class="pull-left">MyApp v1.0</div>
-        <div class="pull-right">&copy; 2014 MyCorp</div>
-    </div>
-    {% endblock %}
-
-
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-    <!-- Bootstrap -->
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-  </body>
+        <!-- Base JS -->
+        <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+        {% assets "base_js" %}
+            <script type="text/javascript" src="{{ ASSET_URL }}"></script>
+        {% endassets %}
+        <!-- Block-loaded JS -->
+        {% block js %}{% endblock %}
+    </body>
 </html>

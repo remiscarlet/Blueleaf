@@ -1,9 +1,37 @@
-$(window).load(function () {
+$(document).ready(function () {
 
     $('#login-button').on('click', function () {
         $('#error_notices').removeClass('visible');
         var email = $('input#email').val();
         var password = $('input#password').val();
+
+        var error = false;
+
+        if (email === undefined || email === "") {
+            // Display error;
+            $('input#email').parent().addClass('error shake');
+            setTimeout(function () { 
+                $('input#email').parent().removeClass('shake');
+            }, 300);
+            error = true;
+        } else {
+            $('input#email').parent().removeClass('error');
+        }
+        if (password === undefined || password === "") {
+            //Display error;
+            $('input#password').parent().addClass('error shake');
+            setTimeout(function () { 
+                $('input#password').parent().removeClass('shake');
+            }, 300);
+            error = true;
+        } else {
+            $('input#password').parent().removeClass('error');
+        }
+
+        if (error) {
+            return;
+        }
+
 
         var params = {
             email: email,

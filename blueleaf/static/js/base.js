@@ -6,14 +6,14 @@ $(document).ready(function () {
         $('[class^="on-load-"], [class*=" on-load-"]').each(function () {
             parentThis = this;
             console.log($(this));
-            var classes = $(this).attr('class');
-            console.log(classes);
-            classes.split(" ").forEach(function (className) {
-                console.log(className);
-                if (className.indexOf('on-load') === 0) {
-                    $(parentThis).removeClass(className);
-                }
-            });
+            var classes = $(this).attr('class').split(" ");
+            if (classes.length > 0) {
+                classes.forEach(function (className) {
+                    if (className.indexOf('on-load') === 0) {
+                        $(parentThis).removeClass(className);
+                    }
+                });
+            }
         });
     }, 1000);
 });

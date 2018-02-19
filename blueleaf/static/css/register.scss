@@ -7,12 +7,20 @@
     form {
         display: flex;
         flex-flow: column wrap;
+        align-items: center;
 
         .form-group {
+            display: flex;
+            flex-flow: column wrap;
+            align-items: center;
             padding: 7px;
             background-color: transparent;
             border: none;
             margin-bottom: 5px;
+            p.help-block {
+                margin-bottom: 0;
+                
+            }
         }
     }
     .register-width {

@@ -75,6 +75,12 @@
     #control-panel {
         grid-column: 3;
         grid-row: 1;
+        button {
+            padding: 5px;
+            background-color: grey;
+            margin: 10px;
+            border-radius: 10px;
+        }
     }
     #misc-bottom-right {
         grid-column: 3;

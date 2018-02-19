@@ -41,7 +41,10 @@ $(document).ready(function () {
         $.post(Flask.url_for("base.login"), params).done(function (data) {
             // Proceed to main page
             console.log("On success:");
-
+            console.log(data);
+            if (data["success"]) {
+                window.location.href = data["url"];
+            }
         }).fail(function (data) {
             console.log("On failure:");
             $('#error_notices').html("Unknown username or password")

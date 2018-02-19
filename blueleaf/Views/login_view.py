@@ -2,15 +2,15 @@ import flask
 from flask import Blueprint, render_template
 
 
-base = Blueprint('base', __name__,
+base_blueprint = Blueprint('base', __name__,
                  template_folder='templates')
 
 # The Home page is accessible to anyone
-@base.route('/')
+@base_blueprint.route('/')
 def home_page():
     return render_template('login.html')
 
-@base.route('/login', methods=['GET', 'POST'])
+@base_blueprint.route('/login', methods=['GET', 'POST'])
 def login():
     from blueleaf import app
     app.logger.info("Hitting login endpoint")

@@ -1,7 +1,8 @@
 from flask_user import UserMixin
 from flask_sqlalchemy import SQLAlchemy
 
-db = SQLAlchemy()
+user_db = SQLAlchemy()
+db = user_db # Alias for importing purposes
 
 # Define the User data-model.
 # NB: Make sure to add flask_user UserMixin !!!

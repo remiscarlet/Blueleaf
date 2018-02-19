@@ -10,32 +10,26 @@ import requests
 import logging
 from logging.handlers import RotatingFileHandler
 
-import views
-import models
-import bundles
-import config
+from .Views.login_view import base_blueprint
+from .Models.user_model import user_db, User
+from .bundles import assets
+from .config import Config
 
 # Base init
 app = Flask(__name__, static_url_path='/static')
-app.config.from_object(config.Config) # load config from this file
+app.config.from_object(Config) # load config from this file
 
 handler = RotatingFileHandler(app.config["LOG_LOCATION"], maxBytes=10000, backupCount=1)
 handler.setLevel(logging.INFO)
 app.logger.addHandler(handler)
 
 # Blueprints
-app.register_blueprint(views.base)
-
-# SQLAlchemy
-db = models.db
-db.app = app
-db.init_app(app)
+app.register_blueprint(base_blueprint)
 
 # JSGlue
 jsglue = JSGlue(app)
 
 # Bundles
-assets = bundles.assets
 assets.app = app
 assets.init_app(app)
 assets.url = app.static_url_path
@@ -45,11 +39,15 @@ assets.config['PYSCSS_STATIC_ROOT'] = assets.directory
 assets.config['PYSCSS_ASSETS_URL'] = assets.url
 assets.config['PYSCSS_ASSETS_ROOT'] = assets.directory
 
+# SQLAlchemy
+user_db.app = app
+user_db.init_app(app)
+
 # Create all database tables
-db.create_all()
+user_db.create_all()
 
 # Setup Flask-User and specify the User data-model
-db_adapter = SQLAlchemyAdapter(db, models.User)        # Register the User model
+db_adapter = SQLAlchemyAdapter(user_db, User)        # Register the User model
 user_manager = UserManager(db_adapter, app)     # Initialize Flask-User
 
 

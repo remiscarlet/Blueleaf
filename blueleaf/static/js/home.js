@@ -8,6 +8,11 @@ $(document).ready(function () {
 	  //width: plot_dom.width(),
 	  //height: plot_dom.height(),
 	  margin: {
+		l: 30,
+		r: 50,
+		b: 30,
+		t: 30,
+		pad: 4
 	  },
 	  paper_bgcolor: 'rgba(0,0,0,0)',
 	  plot_bgcolor: '#355ad9'

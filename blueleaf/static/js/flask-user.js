@@ -12,4 +12,9 @@ $(document).ready(function () {
 
         $('i#icon-register-'+name).addClass("input-icon fas "+fa_icon+" fa-lg");
     });
+    $('.register-buttons button').on('click', function (evnt) {
+        evnt.preventDefault();
+        console.log("setting window.href to "+$(this).parent().attr('href'));
+        document.location.href = $(this).parent().attr('href');
+    });
 });

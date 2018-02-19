@@ -10,7 +10,7 @@ $(document).ready(function () {
             if (classes.length > 0) {
                 classes.forEach(function (className) {
                     if (className.indexOf('on-load') === 0) {
-                        $(parentThis).removeClass(className);
+                        //$(parentThis).removeClass(className);
                     }
                 });
             }

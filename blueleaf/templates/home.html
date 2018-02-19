@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+<!-- Non-content blocks -->
+{% block title %}Blueleaf - Home{% endblock %}
+
+{% block head %}
+    {% assets "home_css" %}
+        <link rel="stylesheet" href="{{ ASSET_URL }}" />
+    {% endassets %}
+{% endblock head %}
+
+{% block js %}
+    {% assets "home_js" %}
+        <script type="text/javascript" src="{{ ASSET_URL }}"></script>
+    {% endassets %}
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+{% endblock js %}
+
+<!-- Actual content -->
+
+{% block base_content %}
+<div id="main-container">
+    <div id="debt-tracker" class="on-load-slide-right-and-fade">
+        {% include "home/debt_tracker.html" %}
+    </div>
+    <div id="misc-top-center" class="on-load-slide-right-and-fade">
+        {% include "home/misc_top_center.html" %}
+    </div>
+    <div id="control-panel" class="on-load-slide-right-and-fade">
+        {% include "home/control_panel.html" %}
+    </div>
+    <div id="usage-tracker" class="on-load-slide-left-and-fade">
+        {% include "home/usage_tracker.html" %}
+    </div>
+    <div id="misc-bottom-right" class="on-load-slide-left-and-fade">
+        {% include "home/misc_bottom_right.html" %}
+    </div>
+</div>
+{% endblock base_content %}
+

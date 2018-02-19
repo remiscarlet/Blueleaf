@@ -1,15 +1,22 @@
+/**
+ *  VARIABLES
+ *
+ *  Configure sierra SCSS library by adjusting this file
+ *
+ */
+
 // Brand colors
 $brand-primary:         #1a78bc;
 $brand-secondary:       #9e67a1;
 $brand-dark:            #18232f;
-$brand-light:           #34495e;
+$brand-light:           #46545c;
 
 $color-success:         #4caf50;
 $color-info:            #5bc0de;
 $color-warning:         #f0ad4e;
 $color-error:           #e74c3c;
 
-$body-bg:               #2c3e50;
+$body-bg:               #3550ad;
 
 $gray:                  #dee6ea;
 $gray-light:            #edf3f6;
@@ -70,70 +77,8 @@ $border-box:                true;
 
 
 /**
- *  MEDIA QUERIES BREAKPOINTS
+ *  COMPONENTS
  */
-
-// Extra small screen / phone
-//** Deprecated `@screen-xs` as of v3.0.1
-$screen-xs:                  480px;
-//** Deprecated `$screen-xs-min` as of v3.2.0
-$screen-xs-min:              $screen-xs;
-//** Deprecated `$screen-phone` as of v3.0.1
-$screen-phone:               $screen-xs-min;
-
-// Small screen / tablet
-//** Deprecated `$screen-sm` as of v3.0.1
-$screen-sm:                  768px;
-$screen-sm-min:              $screen-sm;
-//** Deprecated `$screen-tablet` as of v3.0.1
-$screen-tablet:              $screen-sm-min;
-
-// Medium screen / desktop
-//** Deprecated `$screen-md` as of v3.0.1
-$screen-md:                  992px;
-$screen-md-min:              $screen-md;
-//** Deprecated `$screen-desktop` as of v3.0.1
-$screen-desktop:             $screen-md-min;
-
-// Large screen / wide desktop
-//** Deprecated `$screen-lg` as of v3.0.1
-$screen-lg:                  1280px;
-$screen-lg-min:              $screen-lg;
-//** Deprecated `$screen-lg-desktop` as of v3.0.1
-$screen-lg-desktop:          $screen-lg-min;
-
-// So media queries don't overlap when required, provide a maximum
-$screen-xs-max:              ($screen-sm-min - 1);
-$screen-sm-max:              ($screen-md-min - 1);
-$screen-md-max:              ($screen-lg-min - 1);
-
-
-// Background colors
-$background-color-map: (
-  'primary':              $brand-primary,
-  'dark':                 $brand-dark,
-  'secondary':            $brand-secondary,
-  'white':                $white,
-  'success':              $color-success,
-  'info':                 $color-info,
-  'warning':              $color-warning,
-  'error':                $color-error,
-  'gray':                 $gray,
-  'gray-light':           $gray-light
-);
-
-// Badges
-$badge-color:           $text-body;
-$badge-bg:              $brand-light;
-$badges-color-map: (
-  primary:              $brand-primary,
-  secondary:            $brand-secondary,
-  dark:                 $brand-dark,
-  light:                $gray,
-  success:              $color-success,
-  error:                $color-error,
-  warning:              $color-warning
-);
 
 // Buttons
 $button-bg-color:       #64829f; // default color for buttons
@@ -203,18 +148,6 @@ $rating8:     #4caf50;
 $rating9:     #43a047;
 $rating10:    #388e3c;
 
-$background-color-map: map-merge($background-color-map, (
-  rating1:    $rating1,
-  rating2:    $rating2,
-  rating3:    $rating3,
-  rating4:    $rating4,
-  rating5:    $rating5,
-  rating6:    $rating6,
-  rating7:    $rating7,
-  rating8:    $rating8,
-  rating9:    $rating9,
-  rating10:   $rating10
-));
 
 // Tables
 $table-bg-color:        $brand-light;

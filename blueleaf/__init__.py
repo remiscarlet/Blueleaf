@@ -10,7 +10,8 @@ import requests
 import logging
 from logging.handlers import RotatingFileHandler
 
-from .Views.login_view import base_blueprint
+from .Views.base_view import base_blueprint
+from .Views.home_view import home_blueprint
 from .Models.user_model import user_db, User
 from .bundles import assets
 from .config import Config
@@ -25,6 +26,7 @@ app.logger.addHandler(handler)
 
 # Blueprints
 app.register_blueprint(base_blueprint)
+app.register_blueprint(home_blueprint)
 
 # JSGlue
 jsglue = JSGlue(app)
@@ -49,7 +51,6 @@ user_db.create_all()
 # Setup Flask-User and specify the User data-model
 db_adapter = SQLAlchemyAdapter(user_db, User)        # Register the User model
 user_manager = UserManager(db_adapter, app)     # Initialize Flask-User
-print(dir(app))
 
 if __name__ == '__main__':
     app.run()

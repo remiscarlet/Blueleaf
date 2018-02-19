@@ -26,6 +26,17 @@ bundles = {
         'css/login.scss',
         'css/register.scss',
         output='gen/unauthenticated.css',
+        depends=('css/incs/*.scss'),
+        filters='pyscss',
+    ),
+    'home_js': Bundle(
+       'js/home.js',
+       output='gen/home.js',
+    ),
+    'home_css': Bundle(
+        'css/home.scss',
+        output='gen/home.css',
+        depends=('css/incs/*.scss'),
         filters='pyscss',
     ),
 }

@@ -1,0 +1,100 @@
+@import "inc/variables";
+@import "inc/scss_base";
+
+#main-container {
+    display: grid;
+    @media all and (min-height: 500px) {
+        grid-template-columns: 2fr 30vh 1fr;
+        grid-template-rows: 30vh 2fr 1fr;
+    }
+    @media all and (max-height: 499px) {
+        grid-template-columns: 2fr 100px 1fr;
+        grid-template-rows: 100px 2fr 1fr;
+    }
+
+    min-width: 1000px;
+    min-height: 500px;
+
+    width: 100%;
+    height: 100%;
+
+    #debt-tracker {
+        grid-column: 1;
+        grid-row: 1;
+    }
+    #misc-top-center {
+        grid-column: 2;
+        grid-row: 1;
+    }
+    #usage-tracker {
+        grid-column: 1 / span 2;
+        grid-row: 2 / span 2;
+
+        .module-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 60px 1fr;
+
+            .module-title {
+                grid-row: 1;
+                font-size: 1.5em;
+                padding: 10px;
+                margin-top: 10px;
+                margin-left: 10px;
+                font-weight: bold;
+            }
+
+            #plot-usage-tracker {
+                grid-row: 2;
+                padding: 15px;
+                width: 100%;
+                height: 100%;
+                
+                // Plotly overrides...?
+                .cartesianlayer {
+                    .plot .scatterlayer {
+                        path.js-line{
+                            stroke: rgb(255, 255, 255) !important;
+                        }
+                        path.point{
+                            fill: rgb(255, 255, 255) !important;
+                        }
+                    }
+                    .yaxislayer-above, .xaxislayer-above {
+                        text {
+                            fill: $gray !important;
+                        }
+                    }
+                    .gridlayer path, .zerolinelayer path {
+                        stroke: $gray-light !important;
+                    }
+                }
+            }
+        }
+    }
+    #control-panel {
+        grid-column: 3;
+        grid-row: 1;
+    }
+    #misc-bottom-right {
+        grid-column: 3;
+        grid-row: 2 / span 2;
+    }
+    
+    > div {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        padding: 5px;
+        > div {
+            width: 100%;
+            height: 100%;
+            margin: 10px;
+            border: 2px #3097BA solid;
+            border-radius: 20px;
+            background-color: #355ad9;
+            box-shadow: 5px 15px 115px -20px #2b374a;
+        }
+    }
+}
+

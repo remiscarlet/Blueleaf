@@ -6,9 +6,23 @@
     100% { opacity: 1; }
 }
 
-@include keyframes(slide-in-from-right) {
+@include keyframes(slide-left) {
     0%   { left: 50px; }
     100% { left: 0px; }
+}
+@include keyframes(slide-right) {
+    0%   { left: -50px; }
+    100% { left: 0px; }
+}
+@include keyframes(slide-left-and-fade) {
+    0%   { left: -50px; opacity: 0; }
+    10%  { left: -50px; }
+    100% { left: 0px; opacity: 1; }
+}
+@include keyframes(slide-right-and-fade) {
+    0%   { left: 50px; opacity: 0; }
+    10%  { left: 50px; }
+    100% { left: 0px; opacity: 1; }
 }
 
 @include keyframes(expand-on-hover) {
@@ -39,9 +53,13 @@
     &-fade-in {
         @include animation('fade-in 1s 1');
     }
-    &-slide-and-fade {
-        @include animation('fade-in 1s 1', 'slide-in-from-right 1s 1');
+    &-slide-left-and-fade {
+        @include animation('slide-left-and-fade 1s 1');
     }
+    &-slide-right-and-fade {
+        @include animation('slide-right-and-fade 1s 1');
+    }
+
 }
 
 .default{
@@ -59,6 +77,7 @@
 
 html, body {
 	height: 100%;
+    width: 100%;
 }
 
 body {
@@ -67,6 +86,8 @@ body {
 
 #master-container {
     height: 100vh;
+    width: 100%;
+    overflow: scroll;
     display: grid;
 	grid-template-columns: 1fr;
     grid-template-rows: 1fr 50px;

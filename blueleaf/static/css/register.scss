@@ -1,0 +1,34 @@
+#flask-user-content {
+    h1 {
+        text-align: center;
+        font-size: 2em;
+        margin-bottom: 20px;
+    }
+    form {
+        display: flex;
+        flex-flow: column wrap;
+
+        .form-group {
+            padding: 7px;
+            background-color: transparent;
+            border: none;
+            margin-bottom: 5px;
+        }
+    }
+    .register-width {
+        width: 300px;
+    }
+    .register-buttons {
+        text-align: center;
+        a {
+            display: block;
+            button {
+                width: 100%;
+            }
+        }
+        button, input {
+            width: 50%;
+            margin-top: 7px;
+        }
+    }
+}

@@ -1,0 +1,42 @@
+{% extends 'flask_user/public_base.html' %}
+
+{% block content %}
+{% from "flask_user/_macros.html" import render_field, render_submit_field %}
+<h1>{%trans%}Register{%endtrans%}</h1>
+
+<form action="" method="POST" novalidate formnovalidate class="form" role="form">
+    {{ form.hidden_tag() }}
+
+    {# Username or Email #}
+    {% set field = form.username if user_manager.enable_username else form.email %}
+    <div class="form-group {% if field.errors %}has-error{% endif %}">
+        <div class="input input-with-icon register-width">
+            {{ field(class_='form-control', placeholder=field.label.text, tabindex=210) }}
+            <i id="icon-register-{{ field.label.text.lower().replace(" ","_")}}"></i>
+        </div>
+        {% if field.errors %}
+            {% for e in field.errors %}
+                <p class="help-block">{{ e }}</p>
+            {% endfor %}
+        {% endif %}
+    </div>
+
+    {% if user_manager.enable_email and user_manager.enable_username %}
+        {{ render_field(form.email, tabindex=220) }}
+    {% endif %}
+
+    {{ render_field(form.password, tabindex=230) }}
+
+    {% if user_manager.enable_retype_password %}
+        {{ render_field(form.retype_password, tabindex=240) }}
+    {% endif %}
+    <div class="register-buttons">
+        {{ render_submit_field(form.submit, tabindex=280) }}
+        <br>
+        <a href="{{ url_for('base.login') }}" tabindex='290'>
+            <button class="button button-transparent">{%trans%}Already registered? Sign in.{%endtrans%}</button>
+        </a>
+    </div>
+</form>
+
+{% endblock %}

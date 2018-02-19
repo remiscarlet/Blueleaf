@@ -1,5 +1,4 @@
-import flask
-from flask import Blueprint, render_template
+from flask import Blueprint, json, render_template, redirect, url_for, request
 
 
 base_blueprint = Blueprint('base', __name__,
@@ -14,10 +13,13 @@ def home_page():
 def login():
     from blueleaf import app
     app.logger.info("Hitting login endpoint")
-    if flask.request.method == "GET":
-        return redirect(url_for('/'))
-    elif flask.request.method == "POST":
-        data = flask.request.form
-        if flask.request.form["email"] == "asdf":
-            return flask.json.jsonify({"success": True}), 200
-        return flask.json.jsonify({"success": False}), 400
+
+    if request.method == "GET":
+        return redirect(url_for('base.home_page'))
+
+    elif request.method == "POST":
+        data = request.form
+        if request.form["email"] == "asdf":
+            return json.jsonify({"success": True}), 200
+        return json.jsonify({"success": False}), 400
+

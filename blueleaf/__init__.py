@@ -49,8 +49,7 @@ user_db.create_all()
 # Setup Flask-User and specify the User data-model
 db_adapter = SQLAlchemyAdapter(user_db, User)        # Register the User model
 user_manager = UserManager(db_adapter, app)     # Initialize Flask-User
-
-
+print(dir(app))
 
 if __name__ == '__main__':
     app.run()

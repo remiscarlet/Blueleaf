@@ -17,9 +17,15 @@ bundles = {
         'js/login.js',
         output='gen/login.js',
     ),
-    'login_css': Bundle(
+    'flask-user_js': Bundle(
+        'js/flask-user.js',
+        output='gen/flask-user.js',
+    ),
+    'unauthenticated_css': Bundle(
+        'css/unauthenticated.scss',
         'css/login.scss',
-        output='gen/login.css',
+        'css/register.scss',
+        output='gen/unauthenticated.css',
         filters='pyscss',
     ),
 }

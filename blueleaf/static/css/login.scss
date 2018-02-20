@@ -2,6 +2,10 @@
     width: 350px;
 }
 
+body {
+    height: 100vh;
+}
+
 #error_notices{
     transition: opacity 0.5s;
     &.visible {

@@ -10,7 +10,7 @@ bundles = {
         'css/lib/sierra.css',
         'css/base.scss',
         output='gen/base.css',
-        depends=('css/incs/*.scss'),
+        depends=('css/inc/*.scss', 'css/home/*.scss'),
         filters='pyscss'
     ),
     'login_js': Bundle(
@@ -26,7 +26,7 @@ bundles = {
         'css/login.scss',
         'css/register.scss',
         output='gen/unauthenticated.css',
-        depends=('css/incs/*.scss'),
+        depends=('css/inc/*.scss', 'css/home/*.scss'),
         filters='pyscss',
     ),
     'home_js': Bundle(
@@ -37,10 +37,11 @@ bundles = {
     'home_css': Bundle(
         'css/home.scss',
         output='gen/home.css',
-        depends=('css/incs/*.scss'),
+        depends=('css/inc/*.scss', 'css/home/*.scss'),
         filters='pyscss',
     ),
 }
 assets = Environment()
 assets.auto_reload = True
 assets.register(bundles)
+

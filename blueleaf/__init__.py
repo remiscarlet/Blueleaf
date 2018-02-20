@@ -54,3 +54,4 @@ user_manager = UserManager(db_adapter, app)     # Initialize Flask-User
 
 if __name__ == '__main__':
     app.run()
+app.logger.info("AAAAAAAAAAAAAAA");

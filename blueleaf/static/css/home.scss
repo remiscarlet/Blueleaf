@@ -2,9 +2,12 @@
 @import "inc/scss_base";
 
 $white: #E1E6F9;
+$white-dark: #bcc5e6;
+$gray-light-alpha: rgba(150, 150, 150, 0.6);
 $blue-dark: #001252;
 $blue: #3550AD;
 $blue-light: #4C73F9;
+$blue-light-border: #abb2cf;
 $blue-gray: #7182BB;
 
 $sidebar-width: 200px;
@@ -34,6 +37,7 @@ $sidebar-width: 200px;
         right: 0px;
         width: $sidebar-width;
         height: 150%;
+        border-left: 2px $blue-light-border solid;
         @import 'home/sidebar';
     }
     #topbar {

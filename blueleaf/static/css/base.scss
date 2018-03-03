@@ -1,6 +1,8 @@
 @import "inc/variables";
 @import "inc/scss_base";
 
+@import "variables";
+
 @include keyframes(fade-in) {
     0%   { opacity: 0; }
     100% { opacity: 1; }

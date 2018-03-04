@@ -19,18 +19,18 @@
 <!-- Actual content -->
 
 {% block base_content %}
-<div id="main-container">
-    <div id="sidebar">
+<div class="home-container">
+    <div class="home-container_sidebar sidebar">
         {% include "home/sidebar.html" %}
     </div>
-    <div id="topbar">
+    <div class="home-container_topbar topbar">
         {% include "home/topbar.html" %}
     </div>
-    <div id="main-content" class="on-load-fade">
-        <div id="usage-tracker">
+    <div class="home-container_home-content home-content">
+        <div class="home-content_usage-tracker usage-tracker">
             {% include "home/usage_tracker.html" %}
         </div>
-        <div id="debt-tracker">
+        <div class="home-content_debt-tracker debt-tracker">
             {% include "home/debt_tracker.html" %}
         </div>
     </div>

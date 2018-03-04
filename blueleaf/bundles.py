@@ -30,7 +30,7 @@ bundles = {
         filters='pyscss',
     ),
     'home_js': Bundle(
-       'js/home/usage_tracker.js',
+       'js/home/content/usage_tracker.js',
        'js/home/control_panel.js',
        'js/home/sidebar.js',
        output='gen/home.js',
